@@ -16,7 +16,7 @@ describe DonorsChooseApi::Project do
     end
   end
 
-  describe '.find_by_url(link_url)' do
+  describe '.find_by_url(link_url, api_key)' do
     it 'returns an instance of the project class' do
       DonorsChooseApi::Project.find_by_url(SAMPLE_URL).should be_a(DonorsChooseApi::Project)
     end

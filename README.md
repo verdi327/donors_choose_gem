@@ -22,13 +22,19 @@ Or install it yourself as:
 
 ## Usage
 
-#### The gem has one external method to interact with.  It will return an instance of the Project class.
+#### The gem has two external method to interact with.  It will return an instance of the Project class.
 
 ### Sample Call 1 (without own api key)
 * DonorsChooseApi::Project.find_by_url("http://www.donorschoose.org/project/appletv-makes-classroom-tech-imazing/774020/")
 
 ### Sample Call 2
 * DonorsChooseApi::Project.find_by_url("http://www.donorschoose.org/project/appletv-makes-classroom-tech-imazing/774020/", API_KEY)
+
+### Sample Call 3 (without own api key)
+* DonorsChooseApi::Project.find(774020)
+
+### Sample Call 4
+* DonorsChooseApi::Project.find(774020, API_KEY)
 
 ### The Project class returns these attributes
 * :proposal_url

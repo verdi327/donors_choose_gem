@@ -40,9 +40,15 @@ module DonorsChooseApi
       JSON.parse(link_url)
     end
 
-    def self.find_by_url(link_url, api_key)
-      response = parse(client.data_for(link_url, api_key))
+    def self.find_by_url(link_url, api_key=nil)
+      response = parse(client.find_by_url(link_url, api_key))
       new(response['proposals'].first)
     end
+
+    def self.find(id,api_key=nil)
+      response = parse(client.find(id, api_key))
+      new(response['proposals'].first)
+    end
+
   end
 end

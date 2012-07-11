@@ -46,5 +46,10 @@ module DonorsChooseApi
       response = parse(client.data_for(link_url, api_key))
       new(response['proposals'].first)
     end
+
+    def self.find_by_id(donors_choose_id, api_key=DEFAULT_KEY)
+      response = parse(client.get_id(donors_choose_id, api_key))
+      new(response['proposals'].first)
+    end
   end
 end

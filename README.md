@@ -22,13 +22,17 @@ Or install it yourself as:
 
 ## Usage
 
-#### The gem has one external method to interact with.  It will return an instance of the Project class.
+#### The gem has three external method to interact with.  It will return an instance of the Project class.
 
 ### Sample Call 1 (without own api key)
 * DonorsChooseApi::Project.find_by_url("http://www.donorschoose.org/project/appletv-makes-classroom-tech-imazing/774020/")
 
 ### Sample Call 2
 * DonorsChooseApi::Project.find_by_url("http://www.donorschoose.org/project/appletv-makes-classroom-tech-imazing/774020/", API_KEY)
+
+### Other Methods
+* DonorsChooseApi::Project.find_by_id('811882', API_KEY) #=> returns a project object
+* @project.attributes #=> returns a hash of attributes
 
 ### The Project class returns these attributes
 * :proposal_url
@@ -47,7 +51,7 @@ Or install it yourself as:
 * :school_name
 * :city
 * :zip
-* :state
+* :state_abbr
 * :latitude
 * :longitude
 * :state

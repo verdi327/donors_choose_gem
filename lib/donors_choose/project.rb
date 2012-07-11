@@ -3,12 +3,12 @@ module DonorsChooseApi
     DEFAULT_KEY = "DONORSCHOOSE"
     ATTRIBUTES = [:proposal_url, :fund_url, :image_url, :title, :short_description, :fulfillment_trailer,
                   :percent_funded, :cost_to_complete, :total_price, :free_shipping, :teacher_name,
-                  :grade_level, :poverty_level, :school_name, :city, :zip, :state, :latitude,
+                  :grade_level, :poverty_level, :school_name, :city, :zip, :state, :latitude, :state_abbr,
                   :longitude, :state, :subject, :resource_type, :expiration_date, :funding_status, :donors_choose_id
                 ]
     attr_accessor :proposal_url, :fund_url, :image_url, :title, :short_description, :fulfillment_trailer,
                   :percent_funded, :cost_to_complete, :total_price, :free_shipping, :teacher_name,
-                  :grade_level, :poverty_level, :school_name, :city, :zip, :state, :latitude,
+                  :grade_level, :poverty_level, :school_name, :city, :zip, :state, :latitude, :state_abbr,
                   :longitude, :state, :subject, :resource_type, :expiration_date, :funding_status, :donors_choose_id
 
     def initialize(attributes)
@@ -29,7 +29,7 @@ module DonorsChooseApi
       self.school_name         = attributes['schoolName']
       self.city                = attributes['city']
       self.zip                 = attributes['zip']
-      self.state               = attributes['state']
+      self.state_abbr          = attributes['state']
       self.latitude            = attributes['latitude']
       self.longitude           = attributes['longitude']
       self.state               = attributes['zone']['state']

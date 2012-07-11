@@ -1,6 +1,6 @@
 # DonorsChoose
 
-TODO: Write a gem description
+This is a lightweight gem for the Donors Choose Api.  It's dead simple to use.  Donors Choose requires an api key to make requests.  You can get your api key by sending an email to them at apikey[at]donorschoose[dot]org.  However, you can start using the gem right away as the Api provides a default key, which is already built into gem.  So, if no api key passed as an agrument, the default is used.
 
 ## Installation
 
@@ -18,7 +18,39 @@ Or install it yourself as:
 
 ## Usage
 
-TODO: Write usage instructions here
+### The gem has one external method to interact with.  It will return an instance of the Project class.
+
+### Sample Call 1 (without own api key)
+### DonorsChooseApi::Project.find_by_url("http://www.donorschoose.org/project/appletv-makes-classroom-tech-imazing/774020/")
+
+### Sample Call 2
+### DonorsChooseApi::Project.find_by_url("http://www.donorschoose.org/project/appletv-makes-classroom-tech-imazing/774020/", API_KEY)
+
+### The Project class returns these attributes
+* :proposal_url
+* :fund_url
+* :image_url
+* :title
+* :short_description
+* :fulfillment_trailer
+* :percent_funded
+* :cost_to_complete
+* :total_price
+* :free_shipping
+* :teacher_name
+* :grade_level
+* :poverty_level
+* :school_name
+* :city
+* :zip
+* :state
+* :latitude
+* :longitude
+* :state
+* :subject
+* :resource_type
+* :expiration_date
+* :funding_status
 
 ## Contributing
 

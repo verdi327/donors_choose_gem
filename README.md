@@ -4,6 +4,8 @@ This is a lightweight gem for the Donors Choose Api.  It's dead simple to use.  
 
 Also, to use the gem, just link to this github repo as there is another Donors Choose gem and I am too lazy to change my name at the moment.
 
+In Rails: gem donors_choose, github: "verdi327/donors_choose_gem"
+
 ## Installation
 
 Add this line to your application's Gemfile:

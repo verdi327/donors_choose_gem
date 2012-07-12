@@ -1,5 +1,7 @@
 module DonorsChooseApi
   class Project
+    include DonorsCountFetcher
+
     DEFAULT_KEY = "DONORSCHOOSE"
     ATTRIBUTES = [:proposal_url, :fund_url, :image_url, :title, :short_description, :fulfillment_trailer,
                   :percent_funded, :cost_to_complete, :total_price, :free_shipping, :teacher_name,

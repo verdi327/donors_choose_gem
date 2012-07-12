@@ -1,8 +1,10 @@
 module DonorsChooseApi
   module DonorsCountFetcher
 
-    def donors_to_date(donors_choose_proposal_url = proposal_url)
-      make_connection(donors_choose_proposal_url).css('.needs.donors').children[1].text
+    def donors_to_date
+      unless make_connection(self.proposal_url).css('.needs.donors').any?
+        "0"
+      end
     end
 
     def make_connection(donors_choose_proposal_url)

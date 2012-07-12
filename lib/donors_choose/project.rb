@@ -32,7 +32,7 @@ module DonorsChooseApi
       self.state_abbr          = attributes['state']
       self.latitude            = attributes['latitude']
       self.longitude           = attributes['longitude']
-      self.state               = attributes['zone']['state']
+      self.state               = attributes['zone']['name']
       self.subject             = attributes['subject']['name']
       self.resource_type       = attributes['resource']['name']
       self.expiration_date     = attributes['expirationDate']

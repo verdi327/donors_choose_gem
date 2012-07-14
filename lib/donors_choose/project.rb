@@ -1,45 +1,33 @@
 module DonorsChooseApi
-  class Project
+  class Project < DonorsChooseApi::ApiBaseModel
     include DonorsCountFetcher
-
     DEFAULT_KEY = "DONORSCHOOSE"
-    ATTRIBUTES = [:proposal_url, :fund_url, :image_url, :title, :short_description, :fulfillment_trailer,
-                  :percent_funded, :cost_to_complete, :total_price, :free_shipping, :teacher_name,
-                  :grade_level, :poverty_level, :school_name, :city, :zip, :state, :latitude, :state_abbr,
-                  :longitude, :state, :subject, :resource_type, :expiration_date, :funding_status, :donors_choose_id
-                ]
-    attr_accessor :proposal_url, :fund_url, :image_url, :title, :short_description, :fulfillment_trailer,
-                  :percent_funded, :cost_to_complete, :total_price, :free_shipping, :teacher_name,
-                  :grade_level, :poverty_level, :school_name, :city, :zip, :state, :latitude, :state_abbr,
-                  :longitude, :state, :subject, :resource_type, :expiration_date, :funding_status, :donors_choose_id
 
-    def initialize(attributes)
-      self.donors_choose_id    = attributes['id']
-      self.proposal_url        = attributes['proposalURL']
-      self.fund_url            = attributes['fundURL']
-      self.image_url           = attributes['imageURL']
-      self.title               = attributes['title']
-      self.short_description   = attributes['shortDescription']
-      self.fulfillment_trailer = attributes['fulfillmentTrailer']
-      self.percent_funded      = attributes['percentFunded']
-      self.cost_to_complete    = attributes['costToComplete']
-      self.total_price         = attributes['totalPrice']
-      self.free_shipping       = attributes['freeShipping']
-      self.teacher_name        = attributes['teacherName']
-      self.grade_level         = attributes['gradeLevel']['name']
-      self.poverty_level       = attributes['povertyLevel']
-      self.school_name         = attributes['schoolName']
-      self.city                = attributes['city']
-      self.zip                 = attributes['zip']
-      self.state_abbr          = attributes['state']
-      self.latitude            = attributes['latitude']
-      self.longitude           = attributes['longitude']
-      self.state               = attributes['zone']['name']
-      self.subject             = attributes['subject']['name']
-      self.resource_type       = attributes['resource']['name']
-      self.expiration_date     = attributes['expirationDate']
-      self.funding_status      = attributes['fundingStatus']
-    end
+    field :donors_choose_id, :key    => 'id'
+    field :proposal_url, :key        => 'proposalURL'
+    field :fund_url, :key            => 'fundURL'
+    field :image_url, :key           => 'imageURL'
+    field :title, :key               => 'title'
+    field :short_description, :key   => 'shortDescription'
+    field :fulfillment_trailer, :key => 'fulfillmentTrailer'
+    field :percent_funded, :key      => 'percentFunded'
+    field :cost_to_complete, :key    => 'costToComplete'
+    field :total_price, :key         => 'totalPrice'
+    field :free_shipping, :key       => 'freeShipping'
+    field :teacher_name, :key        => 'teacherName'
+    field :poverty_level, :key       => 'povertyLevel'
+    field :school_name, :key         => 'schoolName'
+    field :city, :key                => 'city'
+    field :state_abbr, :key          => 'state'
+    field :zip, :key                 => 'zip'
+    field :latitude, :key            => 'latitude'
+    field :longitude, :key           => 'longitude'
+    field :expiration_date, :key     => 'expirationDate'
+    field :funding_status, :key      => 'fundingStatus'
+    field(:grade_level, :key         => 'gradeLevel') { |grade_hash| @grade_level = grade_hash['name'] if grade_hash }
+    field(:subject, :key             => 'subject')    { |subject_hash| @subject = subject_hash['name'] if subject_hash }
+    field(:resource_type, :key       => 'resource')   { |resource_hash| @resource_type = resource_hash['name'] if resource_hash }
+    field(:state, :key               => 'zone')       { |zone_hash| @state = zone_hash['name'] if zone_hash }
 
     def self.client
       DonorsChooseApi::Client.new
@@ -57,12 +45,6 @@ module DonorsChooseApi
     def self.find_by_id(donors_choose_id, api_key=DEFAULT_KEY)
       response = parse(client.get_id(donors_choose_id, api_key))
       new(response['proposals'].first)
-    end
-
-    def attributes
-      keys = ATTRIBUTES
-      values = ATTRIBUTES.map { |attribute| self.send(attribute.to_s) }
-      Hash[keys.zip(values)]
     end
   end
 end

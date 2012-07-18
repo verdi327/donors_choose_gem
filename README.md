@@ -2,17 +2,11 @@
 
 This is a lightweight gem for the Donors Choose Api.  It's dead simple to use.  Donors Choose requires an api key to make requests.  You can get your api key by sending an email to them at apikey[at]donorschoose[dot]org.  However, you can start using the gem right away as the Api provides a default key, which is already built into gem.  So, if no api key passed as an agrument, the default is used.
 
-Also, to use the gem, just link to this github repo as there is another Donors Choose gem and I am too lazy to change my name at the moment.
-
-In Rails:
-
-    gem donors_choose, github: "verdi327/donors_choose_gem"
-
 ## Installation
 
 Add this line to your application's Gemfile:
 
-    gem 'donors_choose'
+    gem 'donors_choose2'
 
 And then execute:
 
@@ -20,7 +14,11 @@ And then execute:
 
 Or install it yourself as:
 
-    $ gem install donors_choose
+    $ gem install donors_choose2
+
+Or Link directly to the master branch (for the most up-to-date hotness)
+
+    gem donors_choose, github: "verdi327/donors_choose_gem"
 
 ## Usage
 

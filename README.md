@@ -4,7 +4,8 @@ This is a lightweight gem for the Donors Choose Api.  It's dead simple to use.  
 
 Also, to use the gem, just link to this github repo as there is another Donors Choose gem and I am too lazy to change my name at the moment.
 
-In Rails: gem donors_choose, github: "verdi327/donors_choose_gem"
+In Rails:
+    gem donors_choose, github: "verdi327/donors_choose_gem"
 
 ## Installation
 
@@ -25,14 +26,14 @@ Or install it yourself as:
 #### The gem has three external method to interact with.  It will return an instance of the Project class.
 
 ### Sample Call 1 (without own api key)
-* DonorsChooseApi::Project.find_by_url("http://www.donorschoose.org/project/appletv-makes-classroom-tech-imazing/774020/")
+    DonorsChooseApi::Project.find_by_url("http://www.donorschoose.org/project/appletv-makes-classroom-tech-imazing/774020/")
 
 ### Sample Call 2
-* DonorsChooseApi::Project.find_by_url("http://www.donorschoose.org/project/appletv-makes-classroom-tech-imazing/774020/", API_KEY)
+    DonorsChooseApi::Project.find_by_url("http://www.donorschoose.org/project/appletv-makes-classroom-tech-imazing/774020/", API_KEY)
 
 ### Other Methods
-* DonorsChooseApi::Project.find_by_id('811882', API_KEY) #=> returns a project object
-* @project.attributes #=> returns a hash of attributes
+    DonorsChooseApi::Project.find_by_id('811882', API_KEY) #=> returns a project object
+    @project.attributes #=> returns a hash of attributes
 
 ### The Project class returns these attributes
 * :proposal_url

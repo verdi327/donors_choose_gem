@@ -1,9 +1,10 @@
 require 'spec_helper'
 
 describe DonorsChooseApi::Project do
-  SAMPLE_URL = "http://www.donorschoose.org/project/appletv-makes-classroom-tech-imazing/774020/"
-  SAMPLE_ID = "811882"
-  ATTR_HASH = { 'id' => SAMPLE_ID, 'fundURL' => 'http://foo.com', 'gradeLevel' => {'name' => 'Kindergarten'} }
+  SAMPLE_URL  = "http://www.donorschoose.org/project/appletv-makes-classroom-tech-imazing/774020/"
+  SAMPLE_ID   = "811882"
+  BAD_URL     = "http://www.donorschoose.org/project/blah"
+  ATTR_HASH   = { 'id' => SAMPLE_ID, 'fundURL' => 'http://foo.com', 'gradeLevel' => {'name' => 'Kindergarten'} }
   SAMPLE_JSON = { 'id' => SAMPLE_ID, 'fundURL' => 'http://foo.com', 'gradeLevel' => {'name' => 'Kindergarten'} }.to_json
 
   describe '.client' do
@@ -20,7 +21,11 @@ describe DonorsChooseApi::Project do
 
   describe '.find_by_url(link_url, api_key)' do
    it 'returns an instance of the project class' do
-     DonorsChooseApi::Project.find_by_url(SAMPLE_URL).should be_a(DonorsChooseApi::Project)
+      DonorsChooseApi::Project.find_by_url(SAMPLE_URL).should be_a(DonorsChooseApi::Project)
+   end
+
+   it 'returns an error message if the donors choose url is not valid' do
+      DonorsChooseApi::Project.find_by_url(BAD_URL).should == "Invalid Donors Choose Url"
    end
   end
 

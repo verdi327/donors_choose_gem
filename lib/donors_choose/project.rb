@@ -1,7 +1,8 @@
 module DonorsChooseApi
   class Project < DonorsChooseApi::ApiBaseModel
     include DonorsCountFetcher
-    DEFAULT_KEY = "DONORSCHOOSE"
+    DEFAULT_KEY      = "DONORSCHOOSE"
+    DONORS_URL_REGEX = /http[s]?:\/\/www.donorschoose.org\/project\/[a-zA-Z-]+\/\d+\//i
 
     field :donors_choose_id, :key    => 'id'
     field :proposal_url, :key        => 'proposalURL'
@@ -38,8 +39,12 @@ module DonorsChooseApi
     end
 
     def self.find_by_url(link_url, api_key=DEFAULT_KEY)
-      response = parse(client.data_for(link_url, api_key))
-      new(response['proposals'].first)
+      if link_url =~ DONORS_URL_REGEX
+        response = parse(client.data_for(link_url, api_key))
+        new(response['proposals'].first)
+      else
+        "Invalid Donors Choose Url"
+      end
     end
 
     def self.find_by_id(donors_choose_id, api_key=DEFAULT_KEY)
